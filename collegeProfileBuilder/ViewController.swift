@@ -14,8 +14,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     var myCollegeObject:[CollegeClass] = []
     
-    // var myMovies = ["Paul Blart: Mall Cop", "The Shawshank Redemption", "Step Brothers", "Ace Ventura: Pet Detective"]
-    // var movieYears = ["2009","1994","2008","1994"]
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -28,10 +26,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Adds number of rows based on count of array
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return myCollegeObject.count
     }
     
+
     // Puts data from array in table view/cells
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
@@ -50,14 +50,25 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     // Adds new row with UIAlert, puts typed info into array
+   
     @IBAction func addCell(_ sender: Any) {
-        let alert = UIAlertController(title: "Add Movie", message: nil, preferredStyle: .alert)
-        alert.addTextField {
-            (movieTextField) in movieTextField.placeholder = "Add movie here"
+        let alert = UIAlertController(title: "Add College", message: nil, preferredStyle: .alert)
+        
+        alert.addTextField
+            {
+            (collegeName) in collegeName.placeholder = "Add college name here" 
+            }
+    
+        alert.addTextField
+        {
+            (collegeNum) in collegeNum.placeholder = "Add number of students here"
         }
-        alert.addTextField {
-            (yearTextField) in yearTextField.placeholder = "Add movie here"
-        }
+        
+        alert.addTextField
+        {
+                (collegeLoc) in collegeLoc.placeholder = "Add location of college here"
+         }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let add = UIAlertAction(title: "Add", style: .default) { (action) in
             self.myCollegeObject.append(CollegeClass(Name:(alert.textFields?[0].text)!, Location: (alert.textFields?[1].text)!))
@@ -71,18 +82,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         let detailView = segue.destination as! DetailViewController
-        var selectedRow = myTableView.indexPathForSelectedRow?.row
+        let selectedRow = myTableView.indexPathForSelectedRow?.row
         
-        detailView.classDetail = myCollegeObject[selectedRow!]
+        detailView.collegeInfo = myCollegeObject[selectedRow!] 
     }
     
+    override func viewDidAppear(_ animated: Bool)
+    {
+        myTableView.reloadData()
+    }
+    
+    
 }
-
-
-
-
-
-
-
-
-
