@@ -122,6 +122,21 @@
                                     <action selector="saveButton:" destination="qsC-Mb-fUD" eventType="touchUpInside" id="2li-ec-Msg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rV-Jw-kmz">
+                                <rect key="frame" x="232" y="87" width="93" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="go to website"/>
+                                <connections>
+                                    <action selector="openWebsite:" destination="qsC-Mb-fUD" eventType="touchUpInside" id="AqU-9A-C3K"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ec9-HA-32c">
+                                <rect key="frame" x="157" y="401" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -130,6 +145,7 @@
                         <outlet property="collegeLoc" destination="wzg-7k-ZSu" id="NiZ-FM-deZ"/>
                         <outlet property="collegeName" destination="BbR-Yj-Mxu" id="4q0-f0-J3d"/>
                         <outlet property="collegeNum" destination="Hdh-Pm-d4t" id="req-KY-7gs"/>
+                        <outlet property="collegeWebsite" destination="ec9-HA-32c" id="dYO-Xf-0kJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFO-eq-IFg" userLabel="First Responder" sceneMemberID="firstResponder"/>

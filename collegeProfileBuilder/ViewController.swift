@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate
+{
     
     @IBOutlet weak var myTableView: UITableView!
     
@@ -17,9 +18,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        myCollegeObject.append(CollegeClass(Name: "UIUC", NumOfStudents: "44,087", Location: "Urbana-Champaign, IL", Image: UIImage(named: "IL")!))
-       myCollegeObject.append(CollegeClass(Name: "IU", NumOfStudents: "48,514", Location: "Bloomington, Indiana", Image: UIImage(named: "Indiana")!))
-         myCollegeObject.append(CollegeClass(Name: "USC", NumOfStudents: "44,000", Location: "LA, California", Image: UIImage(named: "cali")!))
+        myCollegeObject.append(CollegeClass(Name: "UIUC", NumOfStudents: "44,087", Location: "Urbana-Champaign, IL", Image: UIImage(named: "IL")!, Website: "http://illinois.edu/"))
+        myCollegeObject.append(CollegeClass(Name: "IU", NumOfStudents: "48,514", Location: "Bloomington, Indiana", Image: UIImage(named: "Indiana")!, Website: "https://www.indiana.edu/"))
+        myCollegeObject.append(CollegeClass(Name: "USC", NumOfStudents: "44,000", Location: "LA, California", Image: UIImage(named: "cali")!, Website: "http://www.usc.edu/"))
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -69,11 +70,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 (collegeLoc) in collegeLoc.placeholder = "Add location of college here"
          }
         
+        alert.addTextField
+        {
+                    (collegeWebsite) in collegeWebsite.placeholder = "Add website here"
+        }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        let add = UIAlertAction(title: "Add", style: .default) { (action) in
-            self.myCollegeObject.append(CollegeClass(Name:(alert.textFields?[0].text)!, Location: (alert.textFields?[1].text)!))
+        let add = UIAlertAction(title: "Add", style: .default)
+            
+        { (action) in self.myCollegeObject.append(CollegeClass(Name:(alert.textFields?[0].text)!,
+            //NumOfStudents: (alert.textFields?[1].text)!, 
+            Location: (alert.textFields?[1].text)!, Website: (alert.textFields?[2].text)!))
+            
             self.myTableView.reloadData()
         }
+        
         alert.addAction(add)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)

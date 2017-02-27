@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class DetailViewController: UIViewController
 {
@@ -17,6 +18,9 @@ class DetailViewController: UIViewController
     @IBOutlet weak var collegeNum: UITextField!
     @IBOutlet weak var collegeLoc: UITextField!
     @IBOutlet weak var collegeImage: UIImageView!
+    @IBOutlet weak var collegeWebsite: UITextField!
+    
+    var urlString = URL(string: "")
     
     
     override func viewDidLoad()
@@ -24,8 +28,9 @@ class DetailViewController: UIViewController
         collegeName.text = collegeInfo.name
         collegeNum.text = collegeInfo.numOfStudents
         collegeLoc.text = collegeInfo.location
-        collegeImage.image = collegeInfo.image 
-        
+        collegeImage.image = collegeInfo.image
+        collegeWebsite.text = collegeInfo.website
+        urlString = URL(string: collegeInfo.website)
         super.viewDidLoad()
 
     }
@@ -38,6 +43,10 @@ class DetailViewController: UIViewController
         collegeInfo.image = collegeImage.image 
     }
     
+    @IBAction func openWebsite(_ sender: Any)
+    {
+         UIApplication.shared.openURL(urlString!)
+    }
   
 
 }
