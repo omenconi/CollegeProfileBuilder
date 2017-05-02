@@ -88,4 +88,12 @@ class DetailViewController: UIViewController, UIImagePickerControllerDelegate, U
             self.collegeImage.image = selectedImage
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let myMapView = segue.destination as! MapViewController
+    }
+
+
+    
 }
